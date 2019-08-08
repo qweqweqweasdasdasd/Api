@@ -1,72 +1,62 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+个人简历
+基本信息                                                                        
+姓名：YAY	                       性别：男
+年龄：29	                       名族：汉
+学历：大专         
+求职意向                                                	                   
+PHP中级工程师 
+职业技能                                                                 
+ 	1,熟练掌握Laravel, Thinkphp等主流PHP开发框架;
+2,掌握Redis, PHP, MySQL, JavaScript, 等Web开发基础知识牢靠, 了解大并发数据解决方案;
+3,熟悉使用Linux操作命令, 可独立部署lnmp环境, ssl加密, shadowsocks部署,了解配置负载均衡, 和简单调优,;
+4,熟练MySQL数据库, 具有MySQL索引优化, 分表和主从复制, 读写分离经验;
+5,面向对象基础扎实, 掌握常用设计模式(单例,工厂,注册树,对象映射), 有良好的代码习惯, 要求结构清晰, 命名规范, 逻辑性强, 代码冗余率低;
+6,有较强的沟通能力, 团队合作精神, 高度的责任心和较好的服务意识;
+工作经验
+2015.06 - 2017.04           宝德科技有限公司
+2017.05 - 2018.12				菲律宾某公司
+2018.04 - 至今				菲律宾某公司		      
+项目经历                                                                                      
+项目一：  京联汽配城 
+项目介绍：
+		是一款为汽配城开发的App, 由公司若干名程序员协同开发, 项目主要是为京联公司开发的一款App, 本项目后台采用RBAC, 来规划使用人员类型, 显示对应的功能。后台实现栏目的添加, 通过这款软件用户可以方便的查询到汽车配件的零售价,在线交易(支付宝), 在线IM(融云客服),物流配送,积分返现,附加了积分功能, 签到, 留言功能, 后台对手机端发布的信息进行审核通过,车辆违章记录查询,车辆保险查询.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+职责：   后台系统的开发 + app接口开发(协同)
+软件环境：linux,apache,mysql,php (lamp)
 
-## About Laravel
+项目二：  旺标网
+项目介绍：
+旺标网是自己公司产品是一个商标交易,商标注册平台,实现了会员中心模块，商品模块，新闻模块，一个自动取名模块，交易下单（线下），自动注册模块，会员上传商标模块等模块,优化：静态页面游览器缓存，css,js分别打包减少http请求，数据缓存层，读写分离，登陆使用token,图片管理上传到阿里OSS,下单短信异步通知。
+抢红包模块: 用户在规定时间内抢红包,前100用户即可获取到红包
+抢红包业务设计:抢红包页面+业务实现+数据库操作,由于活动参加的人员多实际抢到红包的用户少,所以在前后端限流,规定用户请求频率,使用redis设计两个队列,参加[抢红包队列],[抢到红包队列],设置有效期的[红包库存]用于判断规定时间内是否符合条件进入[抢到红包队列],通知用户是否抢到红包,拿到[抢到红包队列]用户批量insert数据表.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+职责： 独立完成后台所有模块的开发和前台数据接口
+软件环境：linux,apache,mysql,php (lamp)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+项目三：  计划网址
+项目介绍：
+	计划网址: 彩种有1分3分5分等,间隔3秒不可重复请求否则会失败
+		a,设置Linux定时器每隔5秒的定时器请求平台接口数据,redis保存这个类型的数据 [key彩种+开奖时间:1||0] 过滤重复的彩种开奖数据.
+		b,处理数据写一个计划生成类,随机生成单双,或者N位定位数值,逐个判断彩种数据是否中奖并修改状态,将数据组装inster数据库.
+		c,设置Linux定时器每隔6小时,把当前时间前三个小时数据删除.
+		d,前端vue+workman第一次加载获取所有的数据,然后数据库数据有更新推送到前端展示.
+		e,中间拦截器,以ua爬虫,非游览器访问拒绝访问,ip每秒5次以上拒绝访问.
+		f,使用 laravel 任务调度统一管理linux定时器,workman使用composer包 创建命令行启动
+职责： 实现接口
+软件环境：linux,apache,mysql,php (lamp)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+项目四 : 微信存款自动到账系统
+自动到账系统: 提供自动存款和补单(调用存款接口)
+		微信商户号二维码收款,使用安卓app监控微信管理员订单列表,app监控实时把订单到账的 [订单号],[金额],[备注] 推送到自动到账系统,自动到账系统保存
+		订单记录,并根据不同的情况更新不同的状态.
+		自动存款模拟出三个接口:
+		a,获取token令牌接口: 获取token的方法,使用guzzle实现自动登录平台之后,即可得到token令牌,保存到redisn内,根据平台过期时间,自动调用该接口更新redis里面的token,
+		b,查询会员是否属于平台接口: 拿到token令牌,guzzle模拟平台查询会员接口,根据返回值,判断该会员是否属于该平台
+		c,存款动作接口: 获取token令牌,模拟平台存款操作,根据相应值,更新自动到账系统存款状态.
+职责： 独立完成后台所有模块的开发
+软件环境：linux,apache,mysql,php (lamp)
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+自我介绍                                                                        
+ 
+1. 计划任务效率高。团队配合和沟通交流、学习能力和处理问题能力强。 
+2. 做事分的清轻重。对工作尽职尽责，乐于从事有挑战性的工作；可以适应公司业务发展 
